@@ -452,7 +452,7 @@ module Axlsx
         v
       when :time
         self.style = STYLE_DATE if self.style == 0
-        v.respond_to?(:to_time) ? v.to_time : v
+        (!v.is_a?(Time) && v.respond_to?(:to_time)) ? v.to_time : v
       when :float
         v.to_f
       when :integer
